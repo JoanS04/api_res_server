@@ -32,6 +32,7 @@ app.get('/api/videojocs/filtrarEmpresa/:empresa', (req, res) => {
 app.post('/api/videojocs/create', async (req, res) => {
     let videojocs = await readData();
     const videojoc = req.body;
+    console.log(req.body);
     videojocs.push(videojoc);
     addData(videojoc)
     res.status(201).send('Videojoc creat amb èxit');
