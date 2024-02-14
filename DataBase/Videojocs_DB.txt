@@ -1,26 +1,5 @@
 [
   {
-    "ID": "1",
-    "TITOL": "Assasin's Creed",
-    "ANY": "2019",
-    "MODALITAT": "Aventura",
-    "EMPRESA": "Ubisoft"
-  },
-  {
-    "ID": "2",
-    "TITOL": "FIFA 20",
-    "ANY": "2019",
-    "MODALITAT": "Esport",
-    "EMPRESA": "EA Sports"
-  },
-  {
-    "ID": "3",
-    "TITOL": "actualitzat",
-    "ANY": "2024",
-    "MODALITAT": "FDvcxvcxvxcvcxvxcvxcvcxvcxvcxvxFDF",
-    "EMPRESA": "DEWWWWW"
-  },
-  {
     "ID": "4",
     "TITOL": "actualitzat",
     "ANY": "2024",
