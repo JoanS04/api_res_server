@@ -23,7 +23,7 @@ app.get('/api/videojocs/:id', (req, res) => {
     res.json(videojoc);
 });
 
-app.get('/api/videojocs/:empresa', (req, res) => {
+app.get('/api/videojocs/filtrarEmpresa/:empresa', (req, res) => {
     let videojocs = readData();
     const empresa = req.params.empresa;
     const videojocsEmpresa = videojocs.filter(v => v.EMPRESA === empresa);
@@ -43,7 +43,7 @@ app.put('/api/videojocs/update/:id', (req, res) => {
     let videojocs = readData();
     const id = parseInt(req.params.id);
     const videojocUpdate = req.body;
-    const index = videojocs.findIndex(v => v.ID === id);
+    const index = videojocs.findIndex(v => v.ID === id.toString())
     if (index === -1) {
         return res.status(404).send('Videojoc no trobat');
     }
