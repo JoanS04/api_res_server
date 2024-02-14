@@ -7,10 +7,20 @@ const {readData, addData, writeData} = require("./ReadWrite");
 app.use(bodyParser.json());
 
 
+/*
+    Funcio per obtenir tots els videojocs
+    retorna un array amb tots els videojocs
+ */
 
 app.get('/api/videojocs', async (req, res) => {
     res.json(await readData());
 });
+
+/*
+    Funcio per obtenir un videojoc segons el seu id
+    si el videojoc no existeix retorna un 404
+    si el videojoc existeix retorna el videojoc
+ */
 
 app.get('/api/videojocs/:id', async (req, res) => {
     let videojocs = await readData();
@@ -22,12 +32,22 @@ app.get('/api/videojocs/:id', async (req, res) => {
     res.json(videojoc);
 });
 
+/*
+    Funcio per filtrar els videojocs segons la seva empresa
+    retorna un array amb els videojocs que tenen la mateixa empresa
+ */
+
 app.get('/api/videojocs/filtrarEmpresa/:empresa', (req, res) => {
     let videojocs = readData();
     const empresa = req.params.empresa;
     const videojocsEmpresa = videojocs.filter(v => v.EMPRESA === empresa);
     res.json(videojocsEmpresa);
 });
+
+/*
+    Funcio per crear un videojoc
+    retorna un missatge de exit
+ */
 
 app.post('/api/videojocs/create', async (req, res) => {
     let videojocs = await readData();
@@ -37,6 +57,12 @@ app.post('/api/videojocs/create', async (req, res) => {
     addData(videojoc)
     res.status(201).send('Videojoc creat amb èxit');
 });
+
+/*
+    Funcio per actualitzar un videojoc segons el seu id
+    si el videojoc no existeix retorna un 404
+    si el videojoc existeix actualitza el videojoc i retorna un missatge de exit
+ */
 
 app.put('/api/videojocs/update/:id', (req, res) => {
     let videojocs = readData();
@@ -52,7 +78,9 @@ app.put('/api/videojocs/update/:id', (req, res) => {
 });
 
 /*
-Funcio per eliminar un videojoc segons el seu id
+    Funcio per eliminar un videojoc segons el seu id
+    si el videojoc no existeix retorna un 404
+    si el videojoc existeix esborra el videojoc i retorna un missatge de exit
  */
 
 app.delete('/api/videojocs/delete/:id', async (req, res) => {
