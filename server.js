@@ -12,7 +12,7 @@ app.use(bodyParser.json());
     retorna un array amb tots els videojocs
  */
 
-app.get('/api/videojocs', async (req, res) => {
+app.get('/API_REST_v1/api/videojocs', async (req, res) => {
     res.json(await readData());
 });
 
@@ -22,7 +22,7 @@ app.get('/api/videojocs', async (req, res) => {
     si el videojoc existeix retorna el videojoc
  */
 
-app.get('/api/videojocs/:id', async (req, res) => {
+app.get('/API_REST_v1/api/videojocs/:id', async (req, res) => {
     let videojocs = await readData();
     const id = req.params.id;
     const videojoc = videojocs.find(v => v.ID === id);
@@ -37,7 +37,7 @@ app.get('/api/videojocs/:id', async (req, res) => {
     retorna un array amb els videojocs que tenen la mateixa empresa
  */
 
-app.get('/api/videojocs/filtrarEmpresa/:empresa', (req, res) => {
+app.get('/API_REST_v1/api/videojocs/filtrarEmpresa/:empresa', (req, res) => {
     let videojocs = readData();
     const empresa = req.params.empresa;
     const videojocsEmpresa = videojocs.filter(v => v.EMPRESA === empresa);
@@ -49,7 +49,7 @@ app.get('/api/videojocs/filtrarEmpresa/:empresa', (req, res) => {
     retorna un missatge de exit
  */
 
-app.post('/api/videojocs/create', async (req, res) => {
+app.post('/API_REST_v1/api/videojocs/create', async (req, res) => {
     let videojocs = await readData();
     const videojoc = req.body;
     console.log(req.body);
@@ -64,7 +64,7 @@ app.post('/api/videojocs/create', async (req, res) => {
     si el videojoc existeix actualitza el videojoc i retorna un missatge de exit
  */
 
-app.put('/api/videojocs/update/:id', (req, res) => {
+app.put('/API_REST_v1/api/videojocs/update/:id', (req, res) => {
     let videojocs = readData();
     const id = parseInt(req.params.id);
     const videojocUpdate = req.body;
@@ -83,7 +83,7 @@ app.put('/api/videojocs/update/:id', (req, res) => {
     si el videojoc existeix esborra el videojoc i retorna un missatge de exit
  */
 
-app.delete('/api/videojocs/delete/:id', async (req, res) => {
+app.delete('/API_REST_v1/api/videojocs/delete/:id', async (req, res) => {
     let videojocs = await readData();
     const id = req.params.id;
     if (!videojocs.find(v => v.ID === id)) {
