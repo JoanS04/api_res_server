@@ -5,5 +5,12 @@
     "ANY": "2024",
     "MODALITAT": "vcxvxFDF",
     "EMPRESA": "Ubisoft"
+  },
+  {
+    "EMPRESA": "Epic Games",
+    "ID": "33",
+    "ANY": "2024",
+    "MODALITAT": "Battle Royale",
+    "TITOL": "Dimonis Go"
   }
 ]

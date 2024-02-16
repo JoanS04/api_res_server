@@ -40,7 +40,7 @@ app.get('/API_REST_v1/api/videojocs/:id', async (req, res) => {
 app.get('/API_REST_v1/api/videojocs/filtrarEmpresa/:empresa', (req, res) => {
     let videojocs = readData();
     const empresa = req.params.empresa;
-    const videojocsEmpresa = videojocs.filter(v => v.EMPRESA === empresa);
+    const videojocsEmpresa = videojocs.filter(v => v.EMPRESA === empresa.replaceAll("+", " "));
     res.json(videojocsEmpresa);
 });
 
@@ -52,7 +52,6 @@ app.get('/API_REST_v1/api/videojocs/filtrarEmpresa/:empresa', (req, res) => {
 app.post('/API_REST_v1/api/videojocs/create', async (req, res) => {
     let videojocs = await readData();
     const videojoc = req.body;
-    console.log(req.body);
     videojocs.push(videojoc);
     addData(videojoc)
     res.status(201).send('Videojoc creat amb èxit');
